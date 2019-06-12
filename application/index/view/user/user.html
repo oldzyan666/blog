@@ -1,0 +1,113 @@
+{extend name="Common/Common"}
+
+{block name="css"}
+<link rel="stylesheet" type="text/css" href="__LAYUI__/css/layui.css" media="all" />
+{/block}
+
+{block name="content"}
+
+    <div style="width: 25%;background: cornflowerblue;margin-left: 0; display: block;">
+
+        55
+
+    </div>
+
+    <div style="background: yellowgreen;width: 70%;margin-right: 0;display: block;">
+
+        <fieldset class="layui-elem-field layui-field-title" style="padding-top: 50px;">
+            <legend>动态操作Tab</legend>
+        </fieldset>
+
+        <div class="layui-tab" lay-filter="demo" style="background: #9A9A9A;">
+            <ul class="layui-tab-title">
+                <li class="layui-this" lay-id="11">我的留言</li>
+                <li lay-id="22">我的评论</li>
+                <li lay-id="33">我的点赞</li>
+                <li lay-id="44">个人信息</li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+
+                    {foreach name="message" id="v" key="k"}
+
+                    <div>
+                        {$v.content}
+                        <a href="{:url('del_message')}?id={$v.id}">删除</a>
+                    </div>
+
+                    {/foreach}
+
+                </div>
+
+                <div class="layui-tab-item">
+                    {foreach name="comment" id="v" key="k"}
+
+                    <div>
+                        <a href="{:url('article/article_content')}?id={$v.pid}">{$v.content}</a>
+                        <a href="{:url('del_comment')}?id={$v.id}">删除</a>
+                    </div>
+
+                    {/foreach}
+
+                </div>
+
+                <div class="layui-tab-item">
+
+                    {foreach name="my_zan" id="v" key="k"}
+
+                    <div>
+                        <a href="{:url('article/article_content')}?id={$v.id}">{$v.title}</a>
+                        <a href="{:url('del_zan')}?id={$v.id}">取消点赞</a>
+                    </div>
+
+                    {/foreach}
+
+                </div>
+                <div class="layui-tab-item">
+
+                    {foreach name="query" id="v" key="k"}
+                    <form action="{:url('edit_personal')}" method="post" enctype="multipart/form-data">
+
+                        <!--<div>-->
+                            <!--头像：<img src="__UPLOAD__{$v.img}" style="width: 200px;height: 100px;" name="img">-->
+                            <!--<input name="img" type="file" multiple="" value="11">-->
+                        <!--</div>-->
+                        <div>
+                            头像：<img src="__UPLOAD__{$v.img}" style="width: 200px;height: 100px;" >
+                            <input type="file" value="{$v.img}" name="img">
+                        </div>
+                        <div>
+                            用户名：<input type="text" value="{$v.user}" name="user">
+                        </div>
+
+                        <div>
+                            手机号：<input type="text" value="{$v.pho}" name="pho">
+                        </div>
+
+                        <div>
+                            邮箱：<input type="text" value="{$v.email}" name="email">
+                        </div>
+
+                        <div>
+                            性别：<input type="text" name="sex" value="{$v.sex}">
+                        </div>
+
+                        <input type="submit" value="修改信息">
+                    </form>
+                    {/foreach}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{/block}
+
+{block name="js"}
+<script type='text/javascript' src='__LAYUI__layui.js'></script>
+<script>
+    layui.use('element', function(){
+        var $ = layui.jquery,element = layui.element;
+        //Tab的切换功能，切换事件监听等，需要依赖element模块
+    });
+</script>
+{/block}

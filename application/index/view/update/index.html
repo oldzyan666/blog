@@ -1,0 +1,33 @@
+{extend name="Common/Common"}
+{block name="content"}
+<div id="main" class="content">
+	<div class="container">
+		<style>
+			body.custom-background {
+				background: #fff
+			}
+
+			.container {
+				padding: 10px 0px;
+			}
+		</style>
+		<section class="post_content">
+			<header class="post_header">
+				<h1 class="post_title">更新</h1>
+			</header>
+			<div class="applicant__timeline">
+
+				<ul>
+
+					{foreach name="query" id="v" key="k"}
+					<li>
+						<div>{$v.title}<br /><span class="time-ago">{$v.time}</span></div>
+					</li>
+					{/foreach}
+
+				</ul>
+			</div>
+		</section>
+	</div>
+</div>
+{/block}

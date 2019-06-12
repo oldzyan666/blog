@@ -1,0 +1,33 @@
+{extend name="Common/Common"}
+{block name="content"}
+
+<div id="main" class="content">
+    <div class="container">
+        <section class="post_content" itemscope itemtype="http://schema.org/Article">
+            <header class="post_header">
+                <h1 class="post_title">归档</h1>
+            </header>
+            <div class="post-Archive">
+                <div id="archives">
+                    {foreach name="tmplist" id="v" key="k"}
+
+                    <div class='archive-title' id='arti-2018-3'>
+                        <h3>{$v.mytime}</h3>
+                        {foreach name="$v.rslist" id="v2" key="k2"}
+                        <div class='archives archives-3' data-date='2018-3'>
+                            <div class="brick">
+                                <a href="{:url('article_content')}?id={$v2.id}"><span class="time">{$v2.mytime}</span>{$v2.title}<span>(0)</span></a>
+                            </div>
+                        </div>
+                        {/foreach}
+                    </div>
+
+                    {/foreach}
+
+                </div>
+        </section>
+    </div>
+</div>
+{/block}
+
+

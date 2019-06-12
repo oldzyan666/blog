@@ -1,0 +1,69 @@
+{extend name="Common/Common"}
+{block name="css"}
+<link rel="stylesheet" href="__INDEX__css/bootstrap.min.css">
+<!-- This core.css file contents all plugings css file. -->
+<link rel="stylesheet" href="__INDEX__css/core.css">
+<!-- Theme shortcodes/elements style -->
+<link rel="stylesheet" href="__INDEX__css/shortcode/shortcodes.css">
+<!-- Theme main style -->
+<link rel="stylesheet" href="__INDEX__css/style.css">
+<!-- Responsive css -->
+<link rel="stylesheet" href="__INDEX__css/responsive.css">
+<!-- User style -->
+<link rel="stylesheet" href="__INDEX__css/custom.css">
+{/block}
+
+{block name="content"}
+<div id="main" class="content">
+    <div class="container">
+
+        <div class="login-section section-padding center-block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="registered-customers">
+                            <div class="section-title text-uppercase mb-30">
+                                <h4>注册</h4>
+                            </div>
+                            <form action="{:url('login/checkUser')}" class="am-form" method="post">
+                                <div class="login-account p-20 box-shadow ">
+                                    <div class="">
+                                        <input type="text" placeholder="用户名" name="user" value="">
+                                        <p></p>
+                                    </div>
+                                    <div class="">
+                                        <input type="text" class="pho" placeholder="手机号码" name="pho" style="border: #0C0C0C 1px solid">
+                                        <p></p>
+                                    </div>
+                                    <div class="aa">
+                                        <input type="text" placeholder="邮箱地址" name="email" style="border: #0C0C0C 1px solid">
+                                        <p></p>
+                                    </div>
+                                    <div class="aa">
+                                        <input type="password" placeholder="密码" name="pwd" style="border: #0C0C0C 1px solid">
+                                        <p></p>
+                                    </div>
+
+                                    <div class="row center-block updata">
+                                        <div class="col-md-6">
+                                            <button type="submit"  class="submit-btn mt-15 upUser center-block">马上注册!!!</button>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button type="reset" class="submit-btn mt-15 center-block">清空</button>
+                                        </div>
+                                    </div>
+                                    {if condition="!empty(cache('user'))"}
+                                    <div class="logo">
+                                        <p class="">如果有账号请击这里进行绑定: <a class="btn btn-default" href="{:url('log/login')}">绑定</a></p>
+                                    </div>
+                                    {/if}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

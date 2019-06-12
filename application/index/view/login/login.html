@@ -1,0 +1,92 @@
+{extend name="Common/Common"}
+{block name="css"}
+<link rel="stylesheet" href="__INDEX__css/bootstrap.min.css">
+<!-- This core.css file contents all plugings css file. -->
+<link rel="stylesheet" href="__INDEX__css/core.css">
+<!-- Theme shortcodes/elements style -->
+<link rel="stylesheet" href="__INDEX__css/shortcode/shortcodes.css">
+<!-- Theme main style -->
+<link rel="stylesheet" href="__INDEX__css/style.css">
+<!-- Responsive css -->
+<link rel="stylesheet" href="__INDEX__css/responsive.css">
+<!-- User style -->
+<link rel="stylesheet" href="__INDEX__css/custom.css">
+{/block}
+
+{block name="content"}
+<div id="main" class="content">
+    <div class="container">
+
+        <div class="login-section section-padding center-block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="registered-customers">
+                            <div class="section-title text-uppercase mb-30">
+                                <h4>登录</h4>
+                            </div>
+                            <form action="{:url('login/login_in')}" class="am-form" method="post">
+                                <div class="login-account p-20 box-shadow ">
+                                    <div class="">
+                                        <input type="text" placeholder="用户名" name="user" value="">
+                                        <p></p>
+                                    </div>
+                                    <div class="am-form-group">
+                                        <input type="password" class="" name="pwd"  placeholder="输入密码">
+                                    </div>
+                                    <div class="am-form-group">
+                                        <img class="code"  src="{:url('login/code')}" alt="" id="img">
+                                        <input type="text" name="code" placeholder="输入验证码"  >
+                                    </div>
+
+                                    <div class="row center-block updata">
+                                        <div class="col-md-6">
+                                            <button type="submit"  class="submit-btn mt-15 upUser center-block">登录</button>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button type="reset" class="submit-btn mt-15 center-block">清空</button>
+                                        </div>
+                                    </div>
+                                    {if condition="!empty(cache('user'))"}
+                                    <div class="logo">
+                                        <p class="">如果有账号请击这里进行绑定: <a class="btn btn-default" href="{:url('log/login')}">绑定</a></p>
+                                    </div>
+                                    {/if}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name="js"}
+
+<script>
+
+    //变化验证码方法
+    function changcode()
+    {
+        $('.code').attr('src',$('.code').attr('src').split('?')[0]+"?math="+Math.random());
+    }
+
+    //点击验证码chang
+    $('#img').click(function(){
+        changcode();
+    });
+
+    // //点击按钮chang
+    // $('.login').click(function(){
+    //     changcode();
+    // });
+
+</script>
+{/block}
+
+
+
+</script>
+{/block}
